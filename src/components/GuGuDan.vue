@@ -3,7 +3,7 @@
     <div>{{ first }} X {{ second }}?</div>
     <form @submit="onSubmitForm">
       <input type="number" ref="answer" v-model="value" />
-      <button type="subimt" @click="onClickButton">Button</button>
+      <button type="subimt">Button</button>
       <!-- <div>{{ value }}</div> -->
     </form>
     <div id="result">{{ result }}</div>
@@ -39,8 +39,7 @@ export default {
         // this.input.focus();
         this.$refs.answer.focus();
       }
-    },
-    onClickButton() {}
+    }
   }
 };
 </script>
