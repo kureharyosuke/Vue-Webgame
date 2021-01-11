@@ -3,6 +3,7 @@ import Router from "vue-router";
 import Liked from "@/components/Liked";
 import GuGuDan from "@/components/GuGuDan";
 import WordRelay from "@/components/WordRelay";
+import NumberBaseball from "@/components/NumberBaseball";
 
 Vue.use(Router);
 
@@ -22,6 +23,11 @@ export default new Router({
       path: "/wordrelay",
       name: "WordRelay",
       component: WordRelay
+    },
+    {
+      path: "/numberbaseball",
+      name: "NumberBaseball",
+      component: NumberBaseball
     }
   ]
 });
