@@ -4,6 +4,7 @@ import Liked from "@/components/Liked";
 import GuGuDan from "@/components/GuGuDan";
 import WordRelay from "@/components/WordRelay";
 import NumberBaseball from "@/components/NumberBaseball";
+import ResponsCheck from "@/components/ResponsCheck";
 
 Vue.use(Router);
 
