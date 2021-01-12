@@ -7,7 +7,7 @@
     <button type="submit">Button</button>
     <div>Try:{{ tries.length }}</div>
     <ul>
-      <li v-for="t in tries">
+      <li v-for="t in tries" v-bind:key="t.try">
         <div>{{ t.try }}</div>
         <div>{{ t.result }}</div>
       </li>

@@ -28,6 +28,11 @@ export default new Router({
       path: "/numberbaseball",
       name: "NumberBaseball",
       component: NumberBaseball
+    },
+    {
+      path: "/responscheck",
+      name: "ResponsCheck",
+      component: ResponsCheck
     }
   ]
 });
