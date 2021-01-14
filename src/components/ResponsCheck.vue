@@ -25,6 +25,7 @@ export default {
     };
   },
   computed: {
+    //computed 는 데이터를 가공하거나, 캐싱 성능최적화에 효과적이다. 꼭 써야한다.
     average() {
       return this.result.reduce((a, c) => a + c, 0) / this.result.length || 0;
     }
