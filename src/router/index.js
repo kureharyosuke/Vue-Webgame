@@ -34,6 +34,11 @@ export default new Router({
       path: "/responscheck",
       name: "ResponsCheck",
       component: ResponsCheck
+    },
+    {
+      path: "/rockScissorsPaper",
+      name: "RockScissorsPaper",
+      component: RockScissorsPaper
     }
   ]
 });
