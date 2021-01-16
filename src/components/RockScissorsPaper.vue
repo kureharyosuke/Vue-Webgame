@@ -18,6 +18,14 @@ const rspCoords = {
   보: "-284"
 }; //background-position CSS
 
+const computerChoice = imgCoord => {
+  return Object.entries(rspCoords).find(function(v) {
+    return v[1] === imgCoord;
+  });
+};
+
+let interval = null;
+
 export default {
   name: "RockScissorsPaper",
   data() {
@@ -36,12 +44,41 @@ export default {
     }
   },
   methods: {
-    onClickButton(choice) {}
+    onClickButton(choice) {
+      clearInterval(interval);
+      const myScore = scores[choice];
+      const cpuScore = this.score;
+    }
   },
-  created() {},
-  mounted() {},
-  updated() {},
-  destroyed() {}
+  beforeCreate() {},
+  created() {
+    console.log("created");
+    // 화면 보여지기는 하지만,
+  },
+  beforeMount() {},
+  mounted() {
+    console.log("mounted");
+    interval = setInterval(() => {
+      if (this.imgCoord === this.rspCoords.바위) {
+        this.imgCoord = rspCoords.가위;
+      } else if (this.imgCoord === this.rspCoords.가위) {
+        this.imgCoord = rspCoords.보;
+      } else if (this.imgCoord === this.rspCoords.보) {
+        this.imgCoord = rspCoords.바위;
+      }
+    }, 100);
+  },
+  beforeUpdate() {},
+  updated() {
+    console.log("updated");
+  },
+  beforeDestroy() {
+    console.log("beforeDestory");
+  },
+  destroyed() {
+    console.log("destroyed");
+    clearInterval(interval);
+  }
 };
 </script>
 

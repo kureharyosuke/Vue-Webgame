@@ -5,6 +5,7 @@ import GuGuDan from "@/components/GuGuDan";
 import WordRelay from "@/components/WordRelay";
 import NumberBaseball from "@/components/NumberBaseball";
 import ResponsCheck from "@/components/ResponsCheck";
+import RockScissorsPaper from "@/components/RockScissorsPaper";
 
 Vue.use(Router);
 
