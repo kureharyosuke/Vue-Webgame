@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div id="main">
     <div id="computer" :style="computedStyleObject"></div>
     <div>
       <button @click="onClickButton('바위')">바위</button>
@@ -15,8 +15,14 @@
 const rspCoords = {
   바위: "0",
   가위: "-142px",
-  보: "-284"
+  보: "-284px"
 }; //background-position CSS
+
+const scores = {
+  가위: 1,
+  바위: 0,
+  보: -1
+};
 
 const computerChoice = imgCoord => {
   return Object.entries(rspCoords).find(function(v) {
@@ -39,15 +45,41 @@ export default {
   computed: {
     computedStyleObject() {
       return {
-        background: `url(https://en.pimg.jp/023/182/267/1/23182267.jpg) ${this.imageCoord} 0`
+        background: `url(https://en.pimg.jp/023/182/267/1/23182267.jpg) ${this.imgCoord} 0`
       }; //Caching
     }
   },
   methods: {
+    changeHand() {
+      // 코드를 깨끗하게
+      interval = setInterval(() => {
+        if (this.imgCoord === rspCoords.바위) {
+          this.imgCoord = rspCoords.가위;
+        } else if (this.imgCoord === rspCoords.가위) {
+          this.imgCoord = rspCoords.보;
+        } else if (this.imgCoord === rspCoords.보) {
+          this.imgCoord = rspCoords.바위;
+        }
+      }, 100);
+    },
     onClickButton(choice) {
       clearInterval(interval);
       const myScore = scores[choice];
       const cpuScore = this.score;
+      const diff = myScore - cpuScore;
+      if (diff === 0) {
+        this.result = "비겼습니다.";
+      } else if ([-1, 2].includes(diff)) {
+        this.result = "이겼습니다.";
+        this.score += 1;
+      } else {
+        this.result = "졌습니다.";
+        this.score -= 1;
+      }
+      setTimeout(() => {
+        //#memory 문제
+        this.changeHand();
+      }, 1000);
     }
   },
   beforeCreate() {},
@@ -58,15 +90,7 @@ export default {
   beforeMount() {},
   mounted() {
     console.log("mounted");
-    interval = setInterval(() => {
-      if (this.imgCoord === this.rspCoords.바위) {
-        this.imgCoord = rspCoords.가위;
-      } else if (this.imgCoord === this.rspCoords.가위) {
-        this.imgCoord = rspCoords.보;
-      } else if (this.imgCoord === this.rspCoords.보) {
-        this.imgCoord = rspCoords.바위;
-      }
-    }, 100);
+    this.changeHand();
   },
   beforeUpdate() {},
   updated() {
@@ -82,7 +106,13 @@ export default {
 };
 </script>
 
-<style>
+<style scoped>
+#main {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
 #computer {
   width: 142px;
   height: 200px;
