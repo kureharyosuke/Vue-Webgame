@@ -6,6 +6,7 @@ import WordRelay from "@/components/WordRelay";
 import NumberBaseball from "@/components/NumberBaseball";
 import ResponsCheck from "@/components/ResponsCheck";
 import RockScissorsPaper from "@/components/RockScissorsPaper";
+import LottoGenerator from "@/components/LottoGenerator";
 
 Vue.use(Router);
 
@@ -40,6 +41,11 @@ export default new Router({
       path: "/rockScissorsPaper",
       name: "RockScissorsPaper",
       component: RockScissorsPaper
+    },
+    {
+      path: "/LottoGenerator",
+      name: "LottoGenerator",
+      component: LottoGenerator
     }
   ]
 });
