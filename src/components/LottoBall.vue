@@ -1,16 +1,32 @@
 <template>
-  <div class="ball " :style="{ background }">{{ number }}</div>
+  <div class="ball" :style="styleObject">{{ number }}</div>
 </template>
 
 <script>
 export default {
   name: "LottoBall",
-  props: ["number"],
-  data() {
-    let background;
-    return {
-      background
-    };
+  // props: ["number"], 비추천
+  props: {
+    number: Number
+  },
+  computed: {
+    styleObject() {
+      let background;
+      if (this.number <= 10) {
+        background = "red";
+      } else if (this.number <= 20) {
+        background = "orange";
+      } else if (this.number <= 30) {
+        background = "yellow";
+      } else if (this.number <= 40) {
+        background = "blue";
+      } else {
+        background = "green";
+      }
+      return {
+        background
+      };
+    }
   }
 };
 </script>
@@ -25,5 +41,7 @@ export default {
   line-height: 40px;
   font-size: 20px;
   text-align: center;
+  font-weight: 700;
+  color: black;
 }
 </style>

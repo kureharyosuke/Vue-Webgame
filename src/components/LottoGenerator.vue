@@ -32,6 +32,8 @@ function getWinNumbers() {
   const winNumbers = shuffle.slice(0, 6).sort((p, c) => p - c);
   return [...winNumbers, bonusNumber];
 }
+
+const timeouts = [];
 export default {
   components: {
     LottoBall // "lotto-ball": LottoBall, 동일
@@ -45,19 +47,54 @@ export default {
     };
   },
   computed: {},
-  methods: {},
-  mounted() {
-    for (let i = 0; i < this.winNumbers.length - 1; i++) {
-      setTimeout(() => {
-        this.winBalls.push(this.winNumbers[i]);
-      }, (i + 1) * 1000);
+  methods: {
+    onClickRedo() {
+      this.winNumbers = getWinNumbers();
+      this.winBalls = [];
+      this.bonus = null;
+      this.redo = false;
+      this.showBalls();
+      // for (let i = 0; i < this.winNumbers.length - 1; i++) {
+      //   setTimeout(() => {
+      //     this.winBalls.push(this.winNumbers[i]);
+      //   }, (i + 1) * 1000);
+      // }
+      // setTimeout(() => {
+      //   this.bonus = this.winNumbers[6];
+      //   this.redo = true;
+      // }, 7000);
+    },
+    showBalls() {
+      for (let i = 0; i < this.winNumbers.length - 1; i++) {
+        timeouts[i] = setTimeout(() => {
+          this.winBalls.push(this.winNumbers[i]);
+        }, (i + 1) * 1000);
+      }
+      timeouts[6] = setTimeout(() => {
+        this.bonus = this.winNumbers[6];
+        this.redo = true;
+      }, 7000);
     }
-    setTimeout(() => {
-      this.bonus = this.winNumbers[6];
-      this.redo = true;
-    }, 7000);
   },
-  beforeDestroy() {},
+  mounted() {
+    // created화면이 만들어지고, 나서 로또번호가 하나하나 만들어질떄 마운티드
+    // let을 쓰면 문제가 안생기지만, var를 클로저 문제가 생긴다.
+    // for (let i = 0; i < this.winNumbers.length - 1; i++) {
+    //   setTimeout(() => {
+    //     this.winBalls.push(this.winNumbers[i]);
+    //   }, (i + 1) * 1000);
+    // }
+    // setTimeout(() => {
+    //   this.bonus = this.winNumbers[6];
+    //   this.redo = true;
+    // }, 7000);
+    this.showBalls();
+  },
+  beforeDestroy() {
+    timeouts.forEach(t => {
+      clearTimeout(t);
+    });
+  },
   watch: {}
 };
 </script>
