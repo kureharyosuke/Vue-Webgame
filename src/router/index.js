@@ -7,6 +7,7 @@ import NumberBaseball from "@/components/NumberBaseball";
 import ResponsCheck from "@/components/ResponsCheck";
 import RockScissorsPaper from "@/components/RockScissorsPaper";
 import LottoGenerator from "@/components/LottoGenerator";
+import TicTacToc from "@/components/TicTacToc";
 
 Vue.use(Router);
 
@@ -46,6 +47,11 @@ export default new Router({
       path: "/LottoGenerator",
       name: "LottoGenerator",
       component: LottoGenerator
+    },
+    {
+      path: "/TicTacToc",
+      name: "TicTacToc",
+      component: TicTacToc
     }
   ]
 });
