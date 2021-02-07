@@ -11,8 +11,11 @@ export default {
     },
     methods: {
         onClickTd() {
+            console.log( this.$root.$data.turn)
             console.log(this.$root.$data)
             console.log(this.$parent.$data)
+            console.log(this.$root.$data.tableData) // undefined
+            this.$root.$data.tableData[this.rowIndex][this.cellIndex] = this.$root.$data.turn;
             this.$root.$data.turn = this.$root.$data.turn === 'O' ? 'X' : 'O';
         }
     }

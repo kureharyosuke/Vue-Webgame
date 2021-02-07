@@ -11,7 +11,7 @@
 </template>
 
 <script>
-import TdComponent from "../atoms/TdComponent";
+import TdComponent from "./TdComponent";
 export default {
   components: {
     TdComponent
