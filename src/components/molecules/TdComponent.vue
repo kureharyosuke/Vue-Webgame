@@ -15,8 +15,9 @@ export default {
             console.log(this.$root.$data)
             console.log(this.$parent.$data)
             console.log(this.$root.$data.tableData) // undefined
-            this.$root.$data.tableData[this.rowIndex][this.cellIndex] = this.$root.$data.turn;
-            this.$root.$data.turn = this.$root.$data.turn === 'O' ? 'X' : 'O';
+            const rootData = this.$root.$data;
+            rootData.tableData[this.rowIndex][this.cellIndex] = rootData.turn;
+            rootData.turn = rootData.turn === 'O' ? 'X' : 'O';
         }
     }
 
