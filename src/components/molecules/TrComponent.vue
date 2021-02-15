@@ -11,7 +11,7 @@
 </template>
 
 <script>
-import TdComponent from "./TdComponent";
+import TdComponent from "../atoms/TdComponent.vue";
 export default {
   components: {
     TdComponent

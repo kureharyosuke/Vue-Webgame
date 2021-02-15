@@ -11,12 +11,12 @@ export default {
     },
     methods: {
         onClickTd() {
-            console.log( this.$root.$data.turn)
+            console.log(this.$root.$data.turn)
             console.log(this.$root.$data)
             console.log(this.$parent.$data)
             console.log(this.$root.$data.tableData) // undefined
             const rootData = this.$root.$data;
-            rootData.tableData[this.rowIndex][this.cellIndex] = rootData.turn;
+            this.$set(rootData.tableData[this.rowIndex], this.cellIndex, rootData.turn);
             rootData.turn = rootData.turn === 'O' ? 'X' : 'O';
         }
     }
