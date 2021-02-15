@@ -8,6 +8,7 @@ import ResponsCheck from "@/components/ResponsCheck";
 import RockScissorsPaper from "@/components/RockScissorsPaper";
 import LottoGenerator from "@/components/LottoGenerator";
 import TicTacToe from "@/components/TicTacToe";
+import Table from "@/components/Table";
 
 Vue.use(Router);
 
@@ -52,6 +53,11 @@ export default new Router({
       path: "/TicTacToe",
       name: "TicTacToe",
       component: TicTacToe
+    },
+    {
+      path: "/Table",
+      name: "Table",
+      component: Table
     }
   ]
 });
